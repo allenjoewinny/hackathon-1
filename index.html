@@ -128,16 +128,20 @@
          let r = document.createElement('tr');
          t.append(r);
          let h1= document.createElement('th');
-         h1.setAttribute('scope','col')
+         h1.setAttribute('scope','col');
+         h1.innerHTML = '#';
          
          let h2=document.createElement('th');
-         h2.setAttribute('scope','col')
+         h2.setAttribute('scope','col');
+         h1.innerHTML = 'From';
 
           let h3=document.createElement('th');
-          h2.setAttribute('scope','col')
+          h3.setAttribute('scope','col')
+          h1.innerHTML = 'Subject';
 
           let h4=document.createElement('th');
-          h2.setAttribute('scope','col')
+          h4.setAttribute('scope','col');
+          h1.innerHTML = 'Date';
 
           r.append(h1,h2,h3,h4);
         for(let i=0;i<l.result.messages.length;i++){
@@ -155,7 +159,7 @@
             list_table.append(main_row);
             let row1 = document.createElement('td');
             row1.setAttribute('scope','col');
-            row1.innerHTML = i;
+            row1.innerHTML = i+1;
             let row2 = document.createElement('td');
             row2.innerHTML = fromA;
             row2.setAttribute('scope','col');
