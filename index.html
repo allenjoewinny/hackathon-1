@@ -22,7 +22,7 @@
   <a href="#compose-modal"
        data-toggle="modal"
        id="compose-button"
-       class="btn btn-primary pull-right hidden">Compose</a>   
+       class="btn btn-btn-danger pull-right hidden">Compose</a>   
        
        <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -48,7 +48,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" id="send-button" class="btn btn-primary">Send</button>
+                <button type="submit" id="send" class="btn btn-primary">Send</button>
               </div>
             </form>
           </div>
@@ -223,10 +223,30 @@
     return value;
     }
 
-    // function sendEmail()
-    // {
-        
-    // }
+    function sendEmail()
+    {
+          let To = document.getElementById('to').value;
+    let Subject = document.getElementById('subject').value;
+    let Message = document.getElementById('message').value;
+
+    const message =
+        "From: bestevercontenttv@gmail.com\r\n" + 
+        "To: " + To +  "\r\n" +
+        "Subject: " + Subject + "\r\n\r\n" + Message;
+
+
+// The body needs to be base64url encoded.
+const encodedMessage = btoa(message)
+
+const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+
+gapi.client.gmail.users.messages.send({
+    userId: 'me',
+    resource: {
+        'raw': reallyEncodedMessage
+    }
+}).then(function () { console.log("done!")});
+    }
 
 
     </script>
