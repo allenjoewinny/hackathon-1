@@ -19,20 +19,41 @@
 
     <table class="table" id="list_table">
     
-  <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <input type="text " placeholder="from :bestevercontenttc@gmail.com">
-        <input type="text " placeholder="to" id="to">
-        <input type="text " placeholder="subject" id="subject">
-        <input type="text " placeholder="message" id="message">
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">send</button>
+  <a href="#compose-modal"
+       data-toggle="modal"
+       id="compose-button"
+       class="btn btn-primary pull-right hidden">Compose</a>   
+       
+       <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Compose</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form onsubmit="return sendEmail();">
+              <div class="modal-body">
+                <div class="form-group">
+                  <input type="email" class="form-control" id="compose-to" placeholder="To" required />
+                </div>
+      
+                <div class="form-group">
+                  <input type="text" class="form-control" id="subject" placeholder="Subject" required />
+                </div>
+      
+                <div class="form-group">
+                  <textarea class="form-control" id="message" placeholder="Message" rows="10" required></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="send-button" class="btn btn-primary">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
     
     <button id ='list' type="button" class="btn btn-primary">Display the list of Emails</button>
