@@ -27,7 +27,7 @@
     </tr>
     </thead>
 
-    <button id ='list' onclick="display_list()"type="button" class="btn btn-primary">Display the list of Emails</button>
+    <button id ='list' type="button" class="btn btn-primary">Display the list of Emails</button>
 
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -84,7 +84,9 @@
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           //display the list of mails
-          display_list();
+          let temp = document.getElementById('list');
+          temp.setAttribute('onclick','display_list()');
+        //   display_list();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
