@@ -18,15 +18,7 @@
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <table class="table" id="list_table">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">from</th>
-      <th scope="col">subject</th>
-      <th scope="col">date</th>
-    </tr>
-    </thead>
-
+    
     <button id ='list' type="button" class="btn btn-primary">Display the list of Emails</button>
 
     <script type="text/javascript">
@@ -125,7 +117,23 @@
        */
 
       async function display_list() {
-        
+          let t =document.getElementById('list_table');
+         let r = document.createElement('tr');
+         t.append(r);
+         let h1= document.createElement('th');
+         h1.setAttribute('scope','col')
+         
+         let h2=document.createElement('th');
+         h2.setAttribute('scope','col')
+
+          let h3=document.createElement('th');
+          h2.setAttribute('scope','col')
+
+          let h4=document.createElement('th');
+          h2.setAttribute('scope','col')
+
+          r.append(h1,h2,h3,h4);
+  
         let l = await gapi.client.gmail.users.messages.list({
             'userId': 'me',
             'labelIds': 'INBOX',
