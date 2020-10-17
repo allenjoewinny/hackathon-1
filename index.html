@@ -117,7 +117,14 @@
        */
 
       async function display_list() {
-          let t =document.getElementById('list_table');
+          
+  
+        let l = await gapi.client.gmail.users.messages.list({
+            'userId': 'me',
+            'labelIds': 'INBOX',
+            'maxResults': 10
+        })
+        let t =document.getElementById('list_table');
          let r = document.createElement('tr');
          t.append(r);
          let h1= document.createElement('th');
@@ -133,12 +140,6 @@
           h2.setAttribute('scope','col')
 
           r.append(h1,h2,h3,h4);
-  
-        let l = await gapi.client.gmail.users.messages.list({
-            'userId': 'me',
-            'labelIds': 'INBOX',
-            'maxResults': 10
-        })
         for(let i=0;i<l.result.messages.length;i++){
             let c = await gapi.client.gmail.users.messages.get({
                 'userId': 'me',
