@@ -286,7 +286,7 @@ gapi.client.gmail.users.messages.send({
 }).then(alert('Mail send Sucessfuly'));
     }
 
-   await function emailSearch()
+    function emailSearch()
     {
        display_list(0);
        let date_to_parse =search_text.value;
@@ -341,7 +341,7 @@ gapi.client.gmail.users.messages.send({
           h4.innerHTML = 'Date';
 
           r.append(h1,h2,h3,h4);
-          
+
         for(let i=0;i<arr.length;i++)
         {
             if((arr.payload.headers[16].value <= max) && (arr.payload.headers[16].value >= min))
