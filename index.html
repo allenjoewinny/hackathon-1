@@ -30,7 +30,7 @@
      
     
 
- <div class="container">
+ <div class="container text-center" >
      <div class="row">
      <button id="signout_button" style="display: none;" class="bt btn btn-secondary">Sign Out</button>
 
@@ -39,7 +39,7 @@
      <div class="row">
        <table class="table" id="list_table"></table>
      </div>
-     <div class="row " style="margin-top: 10px;">
+     <div class="row " >
          <a href="#compose-modal"
        data-toggle="modal"
        id="compose-button"
@@ -76,7 +76,7 @@
         </div>
       </div>
      </div>
-     <div class="row">
+     <div class="row" style="margin-top: 10px;">
           <button id ='list' type="button" class=" bt btn btn-primary">Display the list of Emails</button>
      </div>
      <div class="row">
@@ -160,7 +160,7 @@
           temp_2.setAttribute('onclick','sendEmail()');
 
         //   to search for email based on dates
-          emailSearch();
+          search_button.setAttribute('onclick','emailSearch()');
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -311,7 +311,7 @@ gapi.client.gmail.users.messages.send({
    async function emailSearch()
     {
        let r =await display_list(0);
-       let date_to_parse ='17 09 2020-16 09 2020';//search_text.value
+       let date_to_parse =search_text.value ;
        let temp = [];
         temp[0] ='';
         temp[1] ='';
