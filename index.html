@@ -17,13 +17,18 @@
         left: 50%;
         transform: translate(-50%,-50%);
      }
+     .l
+     {
+         position :relative;
+         left: 35%;
+     }
      
     </style>
   </head>
   <body>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;" class="bt btn btn-secondary ">Authorize</button>
+    <button id="authorize_button" style="display: none;" class="bt btn btn-secondary l">Authorize</button>
     
 
     
@@ -38,19 +43,18 @@
     
 
  <div class="container  text-center justify-content-center center" >
-     <div class="row  text-center">
-     <button id="signout_button" style="display: none; left: 35%;" class="bt btn btn-secondary">Sign Out</button>
+     <div class="row  text-center l">
+     <button id="signout_button"  class="bt btn btn-secondary">Sign Out</button>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
      </div>
-     <div class="row text-center">
-       <table class="table" id="list_table" style="left: 35%;"></table>
+     <div class="row text-center l">
+       <table class="table" id="list_table" ></table>
      </div>
-     <div class="row text-center" >
+     <div class="row text-center l" >
          <a href="#compose-modal"
        data-toggle="modal"
        id="compose-button"
-       style="left: 35%;"
        class="bt btn btn-danger pull-right hidden">Compose</a>   
        
        <div class="modal fade" id="compose-modal" tabindex="-1" role="dialog">
@@ -84,7 +88,7 @@
         </div>
       </div>
      </div>
-     <div class="row text-center" style="margin-top: 10px;left: 35%;">
+     <div class="row text-center l" style="margin-top: 10px;">
           <button id ='list' type="button" class=" bt btn btn-primary">Display the list of Emails</button>
      </div>
      <div class="row">
