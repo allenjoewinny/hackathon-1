@@ -286,9 +286,9 @@ gapi.client.gmail.users.messages.send({
 }).then(alert('Mail send Sucessfuly'));
     }
 
-    function emailSearch()
+   async function emailSearch()
     {
-       display_list(0);
+       let r =await display_list(0);
        let date_to_parse ='17 10 2020-16 10 2020';//search_text.value
        let temp = [];
        let j=0;
