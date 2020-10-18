@@ -245,7 +245,7 @@
 gapi.client.gmail.users.messages.send({
     userId: 'me',
     resource: {
-        'raw': window.btoa(message).replace(/\+/g, '-').replace(/\//g, '_');
+        'raw': window.btoa(message).replace(/\+/g, '-').replace(/\//g, '_')
     }
 }).then(alert('Mail send Sucessfuly'));
     }
