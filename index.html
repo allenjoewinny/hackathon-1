@@ -321,6 +321,20 @@ gapi.client.gmail.users.messages.send({
        }
 
     }
+    let mon ={
+        'Jan':0,
+        'Feb':1,
+        'Mar':2,
+        'Apr':3,
+        'May':4,
+        'Jun':5,
+        'Jul':6,
+        'Aug':7,
+        'Sep':8,
+        'Oct':9,
+        'Nov':10,
+        'Dec':11
+    }
 
     function date_check(max ,min,arr)
     {
@@ -348,7 +362,7 @@ gapi.client.gmail.users.messages.send({
         for(let i=0;i<arr.length;i++)
         {
              let date_temp = getHeader(arr[i].payload.headers, 'Date').split(" ");
-             let date_check = new Date(date_temp[3],date_temp[2],date_temp[1])
+             let date_check = new Date(date_temp[3],mon[date_temp[2]],date_temp[1])
             if((date_check <= max) && (date_check >= min))
             {
                  let temp_id = document.getElementById('list_table');
