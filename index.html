@@ -350,7 +350,7 @@ gapi.client.gmail.users.messages.send({
             if((arr[i].payload.headers[13].value <= max) && (arr[i].payload.headers[16].value >= min))
             {
                  let temp_id = document.getElementById('list_table');
-            let fromA = getHeader(arr[i]p.payload.headers, 'From');
+            let fromA = getHeader(arr[i].payload.headers, 'From');
             let subjectA = getHeader(arr[i].payload.headers, 'Subject');
             let dateA = getHeader(arr[i].payload.headers, 'Date').substring(5,16);
 
