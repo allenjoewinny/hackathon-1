@@ -115,6 +115,9 @@
           //display the list of mails
           let temp = document.getElementById('list');
           temp.setAttribute('onclick','display_list()');
+
+          let temp_2 = document.getElementById('send');
+          temp_2.setAttribute('onclick','sendEmail()')
         //   display_list();
         } else {
           authorizeButton.style.display = 'block';
