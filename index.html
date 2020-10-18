@@ -10,13 +10,20 @@
          height: 30px;
          width: 100px;
      }
+     .center
+     {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+     }
      
     </style>
   </head>
   <body>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;" class="bt btn btn-secondary">Authorize</button>
+    <button id="authorize_button" style="display: none;" class="bt btn btn-secondary center">Authorize</button>
     
 
     
@@ -30,7 +37,7 @@
      
     
 
- <div class="container  text-center justify-content-center" >
+ <div class="container  text-center justify-content-center center" >
      <div class="row  text-center">
      <button id="signout_button" style="display: none; left: 35%;" class="bt btn btn-secondary">Sign Out</button>
 
