@@ -57,6 +57,13 @@
 
     
     <button id ='list' type="button" class="btn btn-primary">Display the list of Emails</button>
+     
+    <nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="find emails from day month year-day month year" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
 
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
@@ -251,10 +258,10 @@ gapi.client.gmail.users.messages.send({
 }).then(alert('Mail send Sucessfuly'));
     }
 
-    // function search(date_range)
-    // {
-
-    // }
+    function search()
+    {
+      
+    }
 
 
     </script>
