@@ -133,10 +133,12 @@
           //display the list of mails
           let temp = document.getElementById('list');
           temp.setAttribute('onclick','display_list()');
-
+          // to compose  email
           let temp_2 = document.getElementById('send');
-          temp_2.setAttribute('onclick','sendEmail()')
-        //   display_list();
+          temp_2.setAttribute('onclick','sendEmail()');
+
+        //   to search for email based on dates
+          search_button.setAttribute('onclick','emailSearch()')
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -178,15 +180,19 @@
        * are found an appropriate message is printed.
        */
 
-      async function display_list() {
+       let search_list = [];
+        
+      async function display_list(max =10) {
           
-  
+        search_list = [];
         let l = await gapi.client.gmail.users.messages.list({
             'userId': 'me',
             'labelIds': 'INBOX',
             'maxResults': 10
         })
-        let t =document.getElementById('list_table');
+        if(max)
+        {
+            let t =document.getElementById('list_table');
          let r = document.createElement('tr');
          t.append(r);
          let h1= document.createElement('th');
@@ -206,6 +212,8 @@
           h4.innerHTML = 'Date';
 
           r.append(h1,h2,h3,h4);
+        }
+        
         for(let i=0;i<l.result.messages.length;i++){
             let c = await gapi.client.gmail.users.messages.get({
                 'userId': 'me',
@@ -213,7 +221,10 @@
             })
             let temp = c.result;
             console.log(temp);
-            let temp_id = document.getElementById('list_table');
+            search_list.push(temp);
+            if(max)
+            {
+                let temp_id = document.getElementById('list_table');
             let fromA = getHeader(temp.payload.headers, 'From');
             let subjectA = getHeader(temp.payload.headers, 'Subject');
             let dateA = getHeader(temp.payload.headers, 'Date').substring(5,16);
@@ -234,6 +245,8 @@
             row4.setAttribute('scope','col');
 
             main_row.append(row1,row2,row3,row4);
+            }
+            
             }
         
       }
@@ -273,9 +286,89 @@ gapi.client.gmail.users.messages.send({
 }).then(alert('Mail send Sucessfuly'));
     }
 
-    function search()
+   await function emailSearch()
     {
-      
+       display_list(0);
+       let date_to_parse =search_text.value;
+       let temp = [];
+       let j=0;
+       for (let i=0;i<date_to_parse.length;i++)
+       {
+           if(!date_to_parse[i] == '-')
+           {
+             temp[j] = temp[j] + date_to_parse[i];
+           }
+           else
+           {
+               j++;
+           }    
+       }
+       let temp2 = temp[0].split(" ");
+       let temp3 = temp[1].split(" ");
+       let date1 = new Date(temp2[2],temp2[1],temp2[0]) ;
+       let date1 = new Date(temp3[2],temp3[1],temp3[0]) ;
+
+       if (date1>date1)
+       {
+           date_check(date1,date1,search_list);
+       }
+       else
+       {
+           date_check(date1,date1,search_list);
+       }
+
+    }
+
+    function date_check(max ,min,arr)
+    {
+        let t =document.getElementById('list_table');
+         let r = document.createElement('tr');
+         t.append(r);
+         let h1= document.createElement('th');
+         h1.setAttribute('scope','col');
+         h1.innerHTML = '#';
+         
+         let h2=document.createElement('th');
+         h2.setAttribute('scope','col');
+         h2.innerHTML = 'From';
+
+          let h3=document.createElement('th');
+          h3.setAttribute('scope','col')
+          h3.innerHTML = 'Subject';
+
+          let h4=document.createElement('th');
+          h4.setAttribute('scope','col');
+          h4.innerHTML = 'Date';
+
+          r.append(h1,h2,h3,h4);
+          
+        for(let i=0;i<arr.length;i++)
+        {
+            if((arr.payload.headers[16].value <= max) && (arr.payload.headers[16].value >= min))
+            {
+                 let temp_id = document.getElementById('list_table');
+            let fromA = getHeader(temp.payload.headers, 'From');
+            let subjectA = getHeader(temp.payload.headers, 'Subject');
+            let dateA = getHeader(temp.payload.headers, 'Date').substring(5,16);
+
+            let main_row = document.createElement('tr');
+            list_table.append(main_row);
+            let row1 = document.createElement('td');
+            row1.setAttribute('scope','col');
+            row1.innerHTML = i+1;
+            let row2 = document.createElement('td');
+            row2.innerHTML = fromA;
+            row2.setAttribute('scope','col');
+            let row3 = document.createElement('td');
+            row3.innerHTML = subjectA;
+            row3.setAttribute('scope','col');
+            let row4 = document.createElement('td');
+            row4.innerHTML = dateA;
+            row4.setAttribute('scope','col');
+
+            main_row.append(row1,row2,row3,row4);
+            }
+        }
     }
 
 
