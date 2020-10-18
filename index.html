@@ -55,17 +55,24 @@
         </div>
       </div>
 
+      
+
     
     <button id ='list' type="button" class="btn btn-primary">Display the list of Emails</button>
      
     <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="find emails from day month year-day month year" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <input class="form-control mr-sm-2" type="search" placeholder="find emails from day month year-day month year" id="search_text" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Search</button>
   </form>
 </nav>
 
     <script type="text/javascript">
+    let list_button = document.getElementById('list');
+    let compose_button = document.getElementById('compose-button');
+    let search_button = document.getElementById('search');
+    let search_text = document.getElementById('search_text');
+    
       // Client ID and API key from the Developer Console
       var CLIENT_ID = '345402195648-i27u4qth1104f1ulsrnhp0tvnvb3sjgi.apps.googleusercontent.com';
       var API_KEY = 'AIzaSyBDh3Jw_igRbg2DuOBQbc9M5e9BRJ1BaIQ';
@@ -119,6 +126,10 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
+            list_button.style.display = 'block';
+           compose_button.style.display = 'block';
+           search_button.style.display = 'block'; 
+           search_text.style.display = 'block';
           //display the list of mails
           let temp = document.getElementById('list');
           temp.setAttribute('onclick','display_list()');
@@ -129,6 +140,10 @@
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
+           list_button.style.display = 'none';
+           compose_button.style.display = 'none';
+           search_button.style.display = 'none';
+           search_text.style.display = 'none';
         }
       }
 
