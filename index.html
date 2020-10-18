@@ -138,7 +138,7 @@
           temp_2.setAttribute('onclick','sendEmail()');
 
         //   to search for email based on dates
-          search_button.setAttribute('onclick','emailSearch()')
+          emailSearch();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -289,7 +289,7 @@ gapi.client.gmail.users.messages.send({
     function emailSearch()
     {
        display_list(0);
-       let date_to_parse =search_text.value;
+       let date_to_parse ='17 10 2020-16 10 2020';//search_text.value
        let temp = [];
        let j=0;
        for (let i=0;i<date_to_parse.length;i++)
