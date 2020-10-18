@@ -36,7 +36,7 @@
             <form onsubmit="return sendEmail();">
               <div class="modal-body">
                 <div class="form-group">
-                  <input type="email" class="form-control" id="compose-to" placeholder="To" required />
+                  <input type="email" class="form-control" id="to" placeholder="To" required />
                 </div>
       
                 <div class="form-group">
@@ -225,7 +225,8 @@
 
     function sendEmail()
     {
-          let To = document.getElementById('to').value;
+        
+    let To = document.getElementById('to').value;
     let Subject = document.getElementById('subject').value;
     let Message = document.getElementById('message').value;
 
@@ -236,16 +237,14 @@
 
 
 // The body needs to be base64url encoded.
-const encodedMessage = btoa(message)
 
-const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
 
 gapi.client.gmail.users.messages.send({
     userId: 'me',
     resource: {
-        'raw': reallyEncodedMessage
+        'raw': window.btoa(message).replace(/\+/g, '-').replace(/\//g, '_');
     }
-}).then(function () { console.log("done!")});
+}).then(alert('Mail send Sucessfuly'));
     }
 
 
