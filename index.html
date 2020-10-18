@@ -296,11 +296,12 @@ gapi.client.gmail.users.messages.send({
        {
            if(!date_to_parse[i] == '-')
            {
-             temp[j] = temp[j] + date_to_parse[i];
+               j++;
+             
            }
            else
            {
-               j++;
+               temp[j] = temp[j] + date_to_parse[i];
            }    
        }
        let temp2 = temp[0].split(" ");
