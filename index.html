@@ -306,15 +306,15 @@ gapi.client.gmail.users.messages.send({
        let temp2 = temp[0].split(" ");
        let temp3 = temp[1].split(" ");
        let date1 = new Date(temp2[2],temp2[1],temp2[0]) ;
-       let date1 = new Date(temp3[2],temp3[1],temp3[0]) ;
+       let date2 = new Date(temp3[2],temp3[1],temp3[0]) ;
 
-       if (date1>date1)
+       if (date1>date2)
        {
-           date_check(date1,date1,search_list);
+           date_check(date1,date2,search_list);
        }
        else
        {
-           date_check(date1,date1,search_list);
+           date_check(date1,date2,search_list);
        }
 
     }
